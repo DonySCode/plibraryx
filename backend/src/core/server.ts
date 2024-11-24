@@ -19,8 +19,8 @@ class Server {
     this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
-    this.app.use("/users", userRoutes);
-    this.app.use("/books", bookRoutes);
+    this.app.use("/api/users", userRoutes);
+    this.app.use("/api/books", bookRoutes);
   }
 
   public async start() {
