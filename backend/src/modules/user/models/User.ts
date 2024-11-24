@@ -17,7 +17,6 @@ User.init(
         id: {
             type: DataTypes.STRING,
             primaryKey: true,
-            autoIncrement: true,
         },
         username: {
             type: DataTypes.STRING,
@@ -31,11 +30,6 @@ User.init(
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        createdAt:  {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
         },
     },
     {
