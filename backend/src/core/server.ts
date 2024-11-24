@@ -4,6 +4,7 @@ import cors from "cors";
 import Database from "./database";
 import errorHandler from "./errorHandler";
 import userRoutes from "../modules/user/routes/userRoutes";
+import bookrRoutes from "../modules/book/routes/bookRoutes";
 
 class Server {
   private app: Application;
@@ -18,7 +19,8 @@ class Server {
     this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
-    this.app.use("/users", userRoutes)
+    this.app.use("/users", userRoutes);
+    this.app.use("/books", bookrRoutes);
   }
 
   public async start() {
