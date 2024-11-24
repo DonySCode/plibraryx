@@ -18,13 +18,4 @@ export class UserRepository{
             throw error;
         }
     }
-
-    public async getUserByUsername(username: string) {
-        try {
-            return await User.findOne({where: {username}})
-        } catch (error) {
-            console.error("Error al obtener usuario por username: ", error);
-            throw error;
-        }
-    }
 }
