@@ -1,7 +1,8 @@
 import User from "../models/User"
+import {IUserCreationAttributes} from "../interfaces/IUserCreationAttributes";
 
 export class UserRepository{
-    public async createUser(userData: {username: string; email: string; password: string;}){
+    public async createUser(userData: IUserCreationAttributes){
         try {
             return await User.create(userData)
         } catch (error){

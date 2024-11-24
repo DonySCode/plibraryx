@@ -1,9 +1,9 @@
 import {DataTypes, Model} from "sequelize";
 import Database from "../../../core/database";
 import {IBook} from "../interfaces/IBook";
-import {IUserCreationAttributes} from "../interfaces/IBookCreationAttributes";
+import {IBookCreationAttributes} from "../interfaces/IBookCreationAttributes";
 
-class Book extends Model <IBook, IUserCreationAttributes> implements IBook {
+class Book extends Model <IBook, IBookCreationAttributes> implements IBook {
     author!: string;
     coverImage?: string;
     genre!: string[];
