@@ -15,7 +15,7 @@ export class BookService {
         return await this.bookRepository.getAll(options);
     }
 
-    public async getById(id: UUID){
+    public async getById(id: string){
         return await this.bookRepository.getById(id);
     }
 
@@ -27,15 +27,15 @@ export class BookService {
         return await this.bookRepository.update(bookData);
     }
 
-    public async delete(id: UUID){
+    public async delete(id: string){
         return await this.bookRepository.delete(id);
     }
 
-    public async maskAsFavorite(id: UUID){
+    public async maskAsFavorite(id: string){
         return await this.bookRepository.maskAsFavorite(id);
     }
 
-    public async unmaskAsFavorite(id: UUID){
+    public async unmaskAsFavorite(id: string){
         return await this.bookRepository.unmarkAsFavorite(id);
     }
 

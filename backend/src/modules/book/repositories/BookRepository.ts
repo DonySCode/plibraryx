@@ -42,7 +42,7 @@ export class BookRepository {
         }
     }
 
-    public async getById(id: UUID){
+    public async getById(id: string){
         try {
             return await Book.findOne({where: {id}})
         } catch (error){
@@ -64,7 +64,7 @@ export class BookRepository {
         }
     }
 
-    public async delete(id: UUID){
+    public async delete(id: string){
         try {
             return await Book.destroy({where: {id}})
         } catch (error){
@@ -73,7 +73,7 @@ export class BookRepository {
         }
     }
 
-    public async maskAsFavorite(id: UUID){
+    public async maskAsFavorite(id: string){
         try {
             return await Book.update({isFavorite: true},{where: {id}});
         } catch (error){
@@ -82,7 +82,7 @@ export class BookRepository {
         }
     }
 
-    public async unmarkAsFavorite(id: UUID){
+    public async unmarkAsFavorite(id: string){
         try {
             return await Book.update({isFavorite: false},{where: {id}});
         } catch (error){
