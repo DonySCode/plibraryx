@@ -7,7 +7,7 @@ export class UserService {
         this.userRepository = new UserRepository();
     }
 
-    public async registerUser(userData: {id: string; username: string; email: string; password: string;}){
+    public async registerUser(userData: { username: string; email: string; password: string;}){
         return this.userRepository.createUser(userData);
     }
 
