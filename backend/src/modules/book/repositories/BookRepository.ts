@@ -1,7 +1,9 @@
 import Book from "../models/Book";
+import { Op } from "sequelize";
 import {IBookCreationAttributes} from "../interfaces/IBookCreationAttributes";
 import {UUID} from "crypto";
 import {IBook} from "../interfaces/IBook";
+import {IGetBookOptions} from "../interfaces/IGetBookOptions";
 
 export class BookRepository {
     public async add(bookData: IBookCreationAttributes){
@@ -13,9 +15,27 @@ export class BookRepository {
         }
     }
 
-    public async getAll(){
+    public async getAll(options: IGetBookOptions){
         try {
-            return await Book.findAll()
+            const { page, limit, search, author, year, genre, isFavorite, userId} = options;
+            const where: any = { userId }
+
+            if(search){
+                where[Op.or] = [
+                    {title: {[Op.iLike]: `%${search}%`}},
+                    {author: {[Op.iLike]: `%${search}%`}}
+                ];
+            }
+            if(author) where.author = author;
+            if(year) where.year = year;
+            if(genre) where.genre = {[Op.overlap]: genre};
+            if(typeof isFavorite === "boolean") where.isFavorite = isFavorite;
+
+            return await Book.findAndCountAll({
+               where,
+               offset: (page - 1)  * limit,
+               limit,
+            });
         } catch (error){
             console.error("Error al buscar libros: ", error);
             throw error;
@@ -27,15 +47,6 @@ export class BookRepository {
             return await Book.findOne({where: {id}})
         } catch (error){
             console.error("Error al buscar libro: ", error);
-            throw error;
-        }
-    }
-
-    public async getByUser(userId: UUID){
-        try {
-            return await Book.findAll({where: {userId}})
-        } catch (error){
-            console.error("Error al buscar libros: ", error);
             throw error;
         }
     }
