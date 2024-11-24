@@ -28,6 +28,6 @@ export class UserService {
         if(!isPasswordValid){
             throw new Error("Usuario o contraseña incorrectos.");
         }
-        return AuthService.generateJwt(user.id, user.email);
+        return AuthService.generateJwt(user.dataValues.id, user.dataValues.email);
     }
 }
