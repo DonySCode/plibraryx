@@ -49,6 +49,7 @@ class Database {
       await this.createDatabaseIfNotExist();
       await this.sequelize.authenticate();
       console.log("La conexión a base de datos ha sido exitosa.");
+      await this.sequelize.sync();
     } catch (error) {
       console.error(
         "Ha ocurrido un error intentando conectar a la base datos: ",
