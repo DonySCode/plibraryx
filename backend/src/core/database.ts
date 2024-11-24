@@ -57,6 +57,10 @@ class Database {
       throw error;
     }
   }
+
+  public getSequelize(): Sequelize {
+    return this.sequelize;
+  }
 }
 
 export default Database;
