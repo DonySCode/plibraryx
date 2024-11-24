@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import {UserService} from "../services/UserService";
 import {randomUUID} from "crypto";
+import bcrypt from "bcrypt";
 
 export class UserController {
     private userService: UserService;
@@ -11,15 +12,15 @@ export class UserController {
 
     public async register(req: Request, res: Response){
         let {username, email, password} = req.body;
-        const id = randomUUID()
         try {
-            const usernameExists = await this.userService.getUserByUsername(username);
-            if (usernameExists) {
-                res.status(500).json({message: "Este nombre de usuario no está disponible."})
+            const emailExists = await this.userService.getUserByEmail(email);
+            if (emailExists) {
+                res.status(500).json({message: "Ya se ha usado esta dirección de correo electrónico."})
             } else {
-                password =
-                const user = await this.userService.registerUser({id, username, email, password});
-                res.status(201).json(user)
+                const salt = await bcrypt.genSalt(10);
+                const hashedPassword = await bcrypt.hash(password, salt);
+                await this.userService.registerUser({username, email, password: hashedPassword});
+                res.status(201).json({message: "Usuario creado exitosamente."})
             }
         } catch (error){
             res.status(500).json({message: "Error al registrar este usuario"});
