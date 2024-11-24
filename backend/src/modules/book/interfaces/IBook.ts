@@ -8,6 +8,4 @@ export interface IBook {
     rating?: number;
     isFavorite: boolean;
     userId: string;
-    createdAt: Date;
-    updatedAt: Date;
 }
