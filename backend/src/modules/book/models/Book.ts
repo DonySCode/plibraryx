@@ -44,7 +44,7 @@ Book.init({
             allowNull: true,
         },
         rating: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.FLOAT,
             allowNull: true,
         },
         isFavorite: {
@@ -52,7 +52,7 @@ Book.init({
             allowNull: false,
         },
         userId: {
-            type: DataTypes.UUID,
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: 'users',

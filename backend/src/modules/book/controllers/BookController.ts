@@ -11,7 +11,7 @@ export class BookController{
     public async getAll(req: Request, res: Response){
         try {
             const books = await this.bookService.getAll();
-            res.status(201).json(books);
+            res.status(200).json(books);
         } catch(error: any){
             res.status(400).json({message: error.message})
         }
