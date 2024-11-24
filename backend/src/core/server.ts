@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import Database from "./database";
 import errorHandler from "./errorHandler";
+import userRoutes from "../modules/user/routes/userRoutes";
 
 class Server {
   private app: Application;
@@ -17,6 +18,7 @@ class Server {
     this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(errorHandler);
+    this.app.use("/users", userRoutes)
   }
 
   public async start() {
