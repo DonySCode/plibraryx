@@ -1,7 +1,5 @@
 import {Request, Response} from "express";
 import {UserService} from "../services/UserService";
-import {randomUUID} from "crypto";
-import bcrypt from "bcrypt";
 
 export class UserController {
     private userService: UserService;
@@ -10,35 +8,24 @@ export class UserController {
         this.userService = new UserService();
     }
 
-    public async register(req: Request, res: Response){
-        let {username, email, password} = req.body;
+    public async register(req: Request, res: Response): Promise<void>{
         try {
-            const emailExists = await this.userService.getUserByEmail(email);
-            if (emailExists) {
-                res.status(500).json({message: "Ya se ha usado esta dirección de correo electrónico."})
-            } else {
-                const salt = await bcrypt.genSalt(10);
-                const hashedPassword = await bcrypt.hash(password, salt);
-                await this.userService.registerUser({username, email, password: hashedPassword});
-                res.status(201).json({message: "Usuario creado exitosamente."})
-            }
-        } catch (error){
-            res.status(500).json({message: "Error al registrar este usuario"});
+            const user = await this.userService.register(req.body);
+            res.status(201).json({message: "Usuario creado exitosamente: ", user});
+        } catch(error: any){
+            res.status(400).json({message: error.message})
         }
     }
 
-    public async getUser(req: Request, res: Response){
-        const username = req.params.username
+    public async login(req: Request, res: Response): Promise<void>{
+        const {email, password} = req.body;
 
         try {
-            const user = await this.userService.getUserByUsername(username);
-            if(!user){
-                res.status(404).json({message: "Usuario no encontrado."});
-            } else {
-                res.status(200).json(user)
-            }
-        } catch (error){
-            res.status(500).json({message: "Error al obtener este usuario"});
+            const token = await this.userService.login(email, password);
+            res.status(200).json({message: "Se ha iniciado sesión exitosamente: ", token});
+        } catch(error: any){
+            res.status(401).json({message: error.message})
         }
     }
+
 }
