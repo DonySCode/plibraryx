@@ -62,7 +62,7 @@ Book.init({
     },
     {
         sequelize,
-        tableName: "users",
+        tableName: "books",
         timestamps: true,
     }
 )
