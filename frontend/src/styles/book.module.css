@@ -1,0 +1,122 @@
+.container {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+}
+
+.title {
+    text-align: center;
+    color: #0cbbda;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    height: 40px;
+}
+
+.searchbar {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 2px solid #0cbbda;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.select {
+    padding: 10px;
+    border: 2px solid #0cbbda;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table img {
+    display: block;
+    margin: 0 auto;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    background-color: #0cbbda;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination select {
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: #0cbbda;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #009bbd;
+}
+
+.chipContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-block: 1rem;
+}
+.chip {
+    margin: 4px;
+}
+
+.table td {
+    height: 75px;
+    vertical-align: middle;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.actions button{
+    height: 60%;
+}
+
+.logoutButton {
+    margin-bottom: 1rem;
+}
