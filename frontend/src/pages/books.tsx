@@ -52,7 +52,7 @@ const BooksPage = () => {
                 const yearsSet = new Set<number>();
                 const genresSet = new Set<string>();
 
-                rows.forEach(book => {
+                rows?.forEach(book => {
                     authorsSet.add(book.author);
                     yearsSet.add(book.year);
                     // @ts-ignore
@@ -240,7 +240,7 @@ const BooksPage = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {books.map((book) => (
+                        {books?.map((book) => (
                             <tr key={book.id}>
                                 <td>
                                     <img
