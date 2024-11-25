@@ -59,3 +59,77 @@ Esto ejecutará los siguientes scripts:
 - `backend:dev`: Navega a la carpeta `backend` y ejecuta el comando `npm run dev`.
 
 ---
+
+## Documentación de la API
+
+### Usuarios
+
+- **POST /api/users/register**
+  - Registro de un nuevo usuario.
+  - Cuerpo de la solicitud:
+    ```json
+    {
+      "username": "string",
+      "email": "string",
+      "password": "string"
+    }
+    ```
+
+- **POST /api/users/login**
+  - Inicio de sesión de un usuario.
+  - Cuerpo de la solicitud:
+    ```json
+    {
+      "email": "string",
+      "password": "string"
+    }
+    ```
+
+### Libros
+
+- **POST /api/books/**
+  - Añadir un nuevo libro.
+  - Cuerpo de la solicitud:
+    ```json
+    {
+     "title": "string",
+     "author":  "string",
+     "year": "number",
+     "genre": "string[]",
+     "coverImage": "string",
+     "rating":  "number",
+     "isFavorite": "boolean",
+    }
+    ```
+
+- **GET /api/books/**
+  - Obtener todos los libros.
+
+- **GET /api/books/:id**
+  - Obtener un libro por su ID.
+
+- **PUT /api/books/:id**
+  - Actualizar un libro por su ID.
+  - Cuerpo de la solicitud:
+    ```json
+    {
+     "title": "string",
+     "author":  "string",
+     "year": "number",
+     "genre": "string[]",
+     "coverImage": "string",
+     "rating":  "number",
+     "isFavorite": "boolean",
+    }
+    ```
+
+- **DELETE /api/books/:id**
+  - Eliminar un libro por su ID.
+
+- **PATCH /api/books/:id/favorite**
+  - Marcar un libro como favorito.
+
+- **PATCH /api/books/:id/unfavorite**
+  - Desmarcar un libro como favorito.
+
+---
