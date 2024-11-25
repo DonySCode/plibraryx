@@ -133,3 +133,9 @@ Esto ejecutará los siguientes scripts:
   - Desmarcar un libro como favorito.
 
 ---
+
+## Deploy Funcional
+
+http://plibraryx.donycastro.me/
+
+
