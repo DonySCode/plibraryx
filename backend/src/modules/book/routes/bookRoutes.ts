@@ -3,15 +3,15 @@ import {BookController} from "../controllers/BookController";
 import {authenticate} from "../../../shared/middleware/authMiddleware";
 
 const router = Router();
-const userController = new BookController();
+const bookController = new BookController();
 
 router.use(authenticate);
-router.post("/", userController.add.bind(userController));
-router.get("/", userController.getAll.bind(userController));
-router.get("/:id", userController.getById.bind(userController));
-router.put("/:id", userController.update.bind(userController));
-router.delete("/:id", userController.delete.bind(userController));
-router.patch("/:id/favorite", userController.maskAsFavorite.bind(userController));
-router.patch("/:id/unfavorite", userController.unmaskAsFavorite.bind(userController));
+router.post("/", bookController.add.bind(bookController));
+router.get("/", bookController.getAll.bind(bookController));
+router.get("/:id", bookController.getById.bind(bookController));
+router.put("/:id", bookController.update.bind(bookController));
+router.delete("/:id", bookController.delete.bind(bookController));
+router.patch("/:id/favorite", bookController.maskAsFavorite.bind(bookController));
+router.patch("/:id/unfavorite", bookController.unmaskAsFavorite.bind(bookController));
 
 export default router;
